@@ -2792,7 +2792,7 @@ std::vector<int> mergeSortedArrays(const std::vector<std::vector<int>>& arrays) 
 }
 
 int main() {
-    std::vector<std::vector<int>> arrays = {{1, 4, 7}, {2, 5, 8}, {3, 6, 9}};
+    std::vector<std::vector<int>> arrays = `{{1, 4, 7}, {2, 5, 8}, {3, 6, 9}}`;
     std::vector<int> merged = mergeSortedArrays(arrays);
     for (int num : merged) {
         std::cout << num << " ";
@@ -3123,4 +3123,5 @@ m[2] = "two";
 4. **题目 5：比较字符串大小** 编写一个函数，接受两个字符串，返回它们的大小关系（`<`、`>` 或 `=`）。实现一个自定义的字符串比较，而不使用运算符直接比较。
 
 ------
+
 
