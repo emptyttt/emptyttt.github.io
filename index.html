@@ -284,6 +284,40 @@
     object-fit: cover;      /* 自动裁剪，不会变形 */
     display: block;
     }
+    /* =================== 知乎 & csdn博客 =================== */
+    .social-buttons {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+    
+    .social-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      background: #ffffff;
+      border: 1px solid #bfdbfe;
+      border-radius: 999px;
+      font-size: 13px;
+      color: #1e3a8a;
+      text-decoration: none;
+      box-shadow: 0 2px 6px rgba(59, 130, 246, 0.15);
+      transition: all 0.15s ease;
+    }
+    
+    .social-btn:hover {
+      background: #eff6ff;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
+    }
+    
+    .social-icon {
+      width: 16px;
+      height: 16px;
+    }
+
 
     /* =================== 布局 & 卡片 =================== */
 
@@ -549,6 +583,18 @@
             <p class="soft">
               Most projects start as “let me test this quickly” and slowly become something usable.
             </p>
+          </div>
+
+          <div class="social-buttons">
+            <a class="social-btn" href="https://www.zhihu.com/people/66-59-49-13" target="_blank">
+              <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/zhihu.svg" class="social-icon" />
+              Zhihu
+            </a>
+          
+            <a class="social-btn" href="https://blog.csdn.net/2301_80352517?spm=1000.2115.3001.10640" target="_blank">
+              <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/csdn.svg" class="social-icon" />
+              CSDN
+            </a>
           </div>
         </section>
 
