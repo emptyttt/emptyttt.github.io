@@ -2,20 +2,23 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Liuna Tan | Personal Website</title>
+  <title>emptyttt | Personal Site</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Cute Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #fff5fb;
-      --card: #ffffff;
-      --accent: #ff8fb1;
-      --accent-soft: #ffe3f0;
-      --text-main: #333344;
-      --text-soft: #777788;
-      --border-radius-lg: 18px;
-      --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.08);
+      --bg: #020617;
+      --card: #020617;
+      --card-soft: #020617;
+      --surface: rgba(15, 23, 42, 0.9);
+      --border-subtle: rgba(148, 163, 184, 0.25);
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.14);
+      --text-main: #e5e7eb;
+      --text-soft: #9ca3af;
+      --radius-lg: 18px;
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.9);
     }
 
     * {
@@ -25,8 +28,11 @@
     }
 
     body {
-      font-family: "Nunito", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      background: radial-gradient(circle at top left, #ffe3f0 0, #fff5fb 40%, #f9f7ff 100%);
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(56, 189, 248, 0.16), transparent 55%),
+        radial-gradient(circle at 70% 10%, rgba(129, 140, 248, 0.18), transparent 50%),
+        radial-gradient(circle at bottom, rgba(15, 23, 42, 1), rgba(2, 6, 23, 1));
       color: var(--text-main);
       min-height: 100vh;
     }
@@ -34,51 +40,54 @@
     .page {
       max-width: 1040px;
       margin: 0 auto;
-      padding: 32px 16px 48px;
+      padding: 32px 16px 40px;
     }
 
-    /* 顶部个人信息区域 */
+    /* 顶部区域 */
     .hero {
       display: flex;
       flex-wrap: wrap;
       gap: 24px;
       align-items: center;
-      background: var(--card);
+      background: linear-gradient(135deg, rgba(15,23,42,0.92), rgba(15,23,42,0.96));
       border-radius: 22px;
-      padding: 24px 24px 20px;
+      padding: 22px 22px 18px;
       box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(148, 163, 184, 0.25);
       position: relative;
       overflow: hidden;
+      backdrop-filter: blur(18px);
     }
 
     .hero::before {
       content: "";
       position: absolute;
-      width: 180px;
-      height: 180px;
-      background: var(--accent-soft);
-      border-radius: 50%;
-      top: -60px;
-      right: -40px;
-      opacity: 0.7;
+      width: 280px;
+      height: 280px;
+      background: radial-gradient(circle, rgba(56,189,248,0.22), transparent 60%);
+      top: -120px;
+      right: -80px;
+      opacity: 0.9;
+      pointer-events: none;
     }
 
-    .avatar {
-      flex: 0 0 120px;
+    .hero-avatar {
+      flex: 0 0 110px;
       display: flex;
       justify-content: center;
     }
+
     .avatar-circle {
-      width: 110px;
-      height: 110px;
+      width: 92px;
+      height: 92px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #ffd1e3, #ffc4dd);
+      background: radial-gradient(circle at 30% 20%, #38bdf8, #0f172a);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 46px;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
-      border: 3px solid #ffffff;
+      font-size: 42px;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.9);
+      border: 2px solid rgba(148, 163, 184, 0.6);
       position: relative;
       z-index: 1;
     }
@@ -90,50 +99,54 @@
       z-index: 1;
     }
 
-    .hero-name {
+    .hero-header-line {
       display: flex;
-      align-items: center;
+      align-items: baseline;
       gap: 10px;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
+      flex-wrap: wrap;
     }
 
-    .hero-name h1 {
-      font-size: 28px;
-      font-weight: 800;
-    }
-
-    .hero-name span.tag {
-      background: var(--accent-soft);
-      color: var(--accent);
-      padding: 4px 10px;
-      border-radius: 999px;
-      font-size: 12px;
+    .hero-name {
+      font-size: 26px;
       font-weight: 700;
+      letter-spacing: 0.03em;
+    }
+
+    .hero-tag {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+      background: rgba(15,23,42,0.8);
+      border-radius: 999px;
+      padding: 4px 10px;
+      border: 1px solid rgba(56, 189, 248, 0.4);
     }
 
     .hero-subtitle {
-      font-size: 15px;
+      font-size: 14px;
       color: var(--text-soft);
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     .hero-desc {
-      font-size: 14px;
-      color: var(--text-main);
-      margin-bottom: 12px;
+      font-size: 13px;
+      color: #e5e7eb;
+      margin-bottom: 10px;
+      max-width: 580px;
     }
 
     .hero-meta {
-      font-size: 13px;
+      font-size: 12px;
       color: var(--text-soft);
-      margin-bottom: 10px;
     }
 
     .hero-buttons {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      margin-top: 4px;
+      margin-top: 12px;
     }
 
     .btn {
@@ -142,63 +155,83 @@
       justify-content: center;
       padding: 7px 14px;
       border-radius: 999px;
-      font-size: 13px;
+      font-size: 12px;
       text-decoration: none;
       border: none;
       cursor: pointer;
-      transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
-      font-weight: 600;
+      transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease, border-color 0.12s ease;
+      font-weight: 500;
+      gap: 6px;
     }
 
     .btn-primary {
       background: var(--accent);
-      color: #fffafc;
-      box-shadow: 0 4px 14px rgba(255, 143, 177, 0.6);
+      color: #020617;
+      box-shadow: 0 10px 30px rgba(56, 189, 248, 0.4);
     }
 
     .btn-outline {
-      border: 1px solid var(--accent-soft);
-      background: #ffffffaa;
-      color: var(--accent);
+      border: 1px solid var(--border-subtle);
+      background: rgba(15,23,42,0.9);
+      color: var(--text-soft);
     }
 
     .btn:hover {
       transform: translateY(-1px);
-      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 16px 32px rgba(15, 23, 42, 0.7);
+      border-color: rgba(148, 163, 184, 0.6);
     }
 
     /* 主体布局 */
     .layout {
       margin-top: 26px;
       display: grid;
-      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.4fr);
+      grid-template-columns: minmax(0, 2.2fr) minmax(0, 1.5fr);
       gap: 20px;
     }
 
     .section-card {
-      background: var(--card);
-      border-radius: var(--border-radius-lg);
-      padding: 18px 18px 16px;
-      box-shadow: var(--shadow-soft);
-      margin-bottom: 16px;
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      padding: 16px 18px 14px;
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.9);
+      border: 1px solid var(--border-subtle);
+      backdrop-filter: blur(18px);
+      margin-bottom: 14px;
     }
 
     .section-title {
-      font-size: 16px;
-      font-weight: 800;
+      font-size: 14px;
+      font-weight: 600;
       display: flex;
       align-items: center;
       gap: 8px;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
+      color: #e5e7eb;
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
     }
 
-    .section-title span.emoji {
-      font-size: 18px;
+    .section-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.8);
     }
 
     .section-body {
       font-size: 13px;
       color: var(--text-main);
+    }
+
+    ul.clean-list {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    ul.clean-list li {
+      margin-bottom: 5px;
     }
 
     .pill-row {
@@ -209,31 +242,36 @@
     }
 
     .pill {
-      font-size: 12px;
+      font-size: 11px;
       padding: 4px 10px;
       border-radius: 999px;
-      background: var(--accent-soft);
-      color: var(--accent);
-      font-weight: 600;
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      color: #e5e7eb;
       white-space: nowrap;
     }
 
-    ul.clean-list {
-      list-style: none;
-      padding-left: 0;
-    }
-
-    ul.clean-list li {
-      margin-bottom: 6px;
+    .pill-accent {
+      border-color: rgba(56, 189, 248, 0.7);
+      color: var(--accent);
+      background: rgba(15,23,42, 0.95);
     }
 
     .project-item {
-      margin-bottom: 10px;
+      margin-bottom: 9px;
+      padding-bottom: 7px;
+      border-bottom: 1px dashed rgba(51, 65, 85, 0.8);
+    }
+
+    .project-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
     }
 
     .project-title {
-      font-weight: 700;
+      font-weight: 500;
       font-size: 13px;
+      color: #e5e7eb;
     }
 
     .project-tagline {
@@ -242,7 +280,7 @@
     }
 
     .small-note {
-      font-size: 12px;
+      font-size: 11px;
       color: var(--text-soft);
       margin-top: 6px;
     }
@@ -251,25 +289,25 @@
       width: 100%;
       max-width: 100%;
       border-radius: 14px;
-      border: 1px solid #f2d7e9;
-      background: #fff9fd;
+      border: 1px solid rgba(30, 64, 175, 0.7);
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.2), rgba(15, 23, 42, 1));
+      margin-bottom: 6px;
     }
 
-    /* Footer */
     .footer {
-      margin-top: 20px;
+      margin-top: 18px;
       text-align: center;
       font-size: 11px;
       color: var(--text-soft);
     }
 
-    /* 响应式：手机布局 */
+    /* 响应式 */
     @media (max-width: 768px) {
       .hero {
         padding: 18px 16px 16px;
       }
-      .hero-name h1 {
-        font-size: 23px;
+      .hero-name {
+        font-size: 22px;
       }
       .layout {
         grid-template-columns: minmax(0, 1fr);
@@ -279,71 +317,74 @@
 </head>
 <body>
   <div class="page">
-    <!-- 顶部：头像 + 自我介绍 -->
+    <!-- 顶部 -->
     <header class="hero">
-      <div class="avatar">
-        <!-- 你可以把这个 emoji 换成你自己的头像图片（用 <img>） -->
+      <div class="hero-avatar">
         <div class="avatar-circle">
-          🌸
+          <span>:{)</span>
         </div>
       </div>
       <div class="hero-main">
-        <div class="hero-name">
-          <h1>Liuna Tan</h1>
-          <span class="tag">AI Systems & 3D Vision</span>
+        <div class="hero-header-line">
+          <div class="hero-name">emptyttt</div>
+          <div class="hero-tag">likes code, robots & 3D things</div>
         </div>
         <p class="hero-subtitle">
-          Undergraduate @ Hunan University · Future PhD in AI Systems / Architecture
+          A student who enjoys building small systems, breaking things, and then slowly making them work again.
         </p>
         <p class="hero-desc">
-          I enjoy building things at the intersection of <b>3D perception</b>, <b>GPU systems</b>, and <b>AI infrastructure</b> — 
-          from multi-view CLIP&nbsp;→&nbsp;3D fusion pipelines to custom CUDA kernels and large-scale training workflows.
+          This is a quiet corner on the internet to park some interests: 
+          a bit of 3D, a bit of AI, a bit of embedded and robots.  
+          Nothing too serious — just experiments and notes.
         </p>
         <p class="hero-meta">
-          🎯 Interests: 3D referring segmentation · efficient LLM inference · GPU I/O · hardware–software co-design
+          Currently somewhere between “this is fun” and “why is this bug here”.
         </p>
         <div class="hero-buttons">
-          <a class="btn btn-primary" href="mailto:tln88878887@gmail.com">📮 Contact Me</a>
-          <a class="btn btn-outline" href="https://github.com/emptyttt" target="_blank">💻 GitHub Profile</a>
+          <a class="btn btn-primary" href="mailto:tln88878887@gmail.com">
+            <span>Contact</span>
+          </a>
+          <a class="btn btn-outline" href="https://github.com/emptyttt" target="_blank">
+            <span>GitHub</span>
+          </a>
         </div>
       </div>
     </header>
 
-    <!-- 主体两栏布局 -->
+    <!-- 主体两栏 -->
     <main class="layout">
-      <!-- 左侧：About / Research / Projects / Publications -->
+      <!-- 左侧 -->
       <div>
         <!-- About -->
         <section class="section-card">
           <div class="section-title">
-            <span class="emoji">🍓</span>
-            <span>About Me</span>
+            <span class="section-dot"></span>
+            <span>About</span>
           </div>
           <div class="section-body">
             <p>
-              Hi! I'm Liuna, an undergraduate student in Measurement, Control Technology and Instruments at Hunan University.
-              My current research focuses on <b>3D referring segmentation</b> and <b>multimodal fusion</b>, where I build
-              end-to-end pipelines involving point clouds, CLIP-style visual-language models, and GPU-accelerated training.
+              I like writing code that touches the real world: robots that move, sensors that stream data,
+              and 3D scenes that are just slightly less confusing after some processing.
             </p>
             <p style="margin-top: 6px;">
-              Recently, I’ve been shifting my attention from model-level design to the deeper question of 
-              <b>how computation becomes fast</b> — particularly in the context of GPU I/O, memory systems, and accelerator-friendly algorithms.
+              Most of my projects are for learning: trying out ideas, debugging my own misunderstandings,
+              and leaving future-me some breadcrumbs.
             </p>
           </div>
         </section>
 
-        <!-- Research Interests -->
+        <!-- Interests -->
         <section class="section-card">
           <div class="section-title">
-            <span class="emoji">📚</span>
-            <span>Research Interests</span>
+            <span class="section-dot"></span>
+            <span>Interests</span>
           </div>
           <div class="section-body">
             <ul class="clean-list">
-              <li>• 3D perception &amp; referring segmentation on large indoor scenes</li>
-              <li>• Efficient training & inference pipelines for vision and vision-language models</li>
-              <li>• GPU systems: memory behavior, I/O paths, and kernel-level performance</li>
-              <li>• AI infrastructure &amp; architecture support for large-scale workloads</li>
+              <li>• 3D data: point clouds, scenes, and simple attempts to understand them</li>
+              <li>• Robots and embedded systems: STM32, small cars, servos, sensors</li>
+              <li>• Vision & AI: especially models that look at images or 3D environments</li>
+              <li>• Tools that make experiments less painful and more repeatable</li>
             </ul>
           </div>
         </section>
@@ -351,152 +392,143 @@
         <!-- Projects -->
         <section class="section-card">
           <div class="section-title">
-            <span class="emoji">🧠</span>
-            <span>Selected Projects</span>
+            <span class="section-dot"></span>
+            <span>Stuff I’ve Worked On</span>
           </div>
           <div class="section-body">
             <div class="project-item">
               <div class="project-title">
-                3D Referring Segmentation Pipeline · <span style="font-size: 11px; color: var(--text-soft);">ScanNet v2 + CLIP</span>
+                Small 3D / point cloud experiments
               </div>
               <div class="project-tagline">
-                Multi-view RGB → CLIP features → feature injection into 3D point clouds; training a 3D segmentation model guided by language.
+                Playing with multi-view images and 3D scenes, mostly to learn how data flows and how models see the world.
               </div>
             </div>
             <div class="project-item">
               <div class="project-title">
-                GPU Training & Multimodal Fusion System
+                Robots & embedded boards
               </div>
               <div class="project-tagline">
-                Managing CUDA environments, custom C++/CUDA ops (spconv, pointgroup_ops), and large-scale PyTorch workflows on RTX 4090.
+                Line-following cars, servo control, microcontroller projects — things that blink, turn, and sometimes crash into walls.
               </div>
             </div>
             <div class="project-item">
               <div class="project-title">
-                Embedded & Robotics Projects
+                Utility scripts & small tools
               </div>
               <div class="project-tagline">
-                STM32-based servo systems, RoboCup robots, ROS2 navigation experiments — bridging low-level hardware with AI algorithms.
+                Code to organize datasets, monitor training, visualize results, or just save a few minutes in the future.
               </div>
             </div>
             <p class="small-note">
-              More projects are available on my GitHub profile. I’m continuously expanding my work toward AI systems and architecture.
+              A lot of this lives in my GitHub repositories in various levels of “polish”.
             </p>
           </div>
         </section>
 
-        <!-- Publications (future) -->
+        <!-- 占位区域 -->
         <section class="section-card">
           <div class="section-title">
-            <span class="emoji">✨</span>
-            <span>Publications (coming soon)</span>
+            <span class="section-dot"></span>
+            <span>Later</span>
           </div>
           <div class="section-body">
             <p>
-              I am actively preparing research work toward publication in computer vision and AI systems venues.
-              This section will be updated as preprints and papers become available. ✨
+              If something grows big enough to deserve its own page (a project, a write-up, maybe a paper),
+              it will probably appear here. For now, this is mostly a log of what I enjoy working on.
             </p>
           </div>
         </section>
       </div>
 
-      <!-- 右侧：Skills / Awards / Stats / Contact -->
+      <!-- 右侧 -->
       <aside>
         <!-- Skills -->
         <section class="section-card">
           <div class="section-title">
-            <span class="emoji">🧸</span>
-            <span>Skills</span>
+            <span class="section-dot"></span>
+            <span>Tech Stack</span>
           </div>
           <div class="section-body">
-            <div><b>Languages & Tools</b></div>
+            <div>Languages & tools</div>
             <div class="pill-row">
-              <span class="pill">Python</span>
+              <span class="pill pill-accent">Python</span>
+              <span class="pill">C / C++</span>
               <span class="pill">PyTorch</span>
-              <span class="pill">CUDA</span>
-              <span class="pill">C/C++</span>
+              <span class="pill">CUDA (beginner)</span>
+              <span class="pill">Qt</span>
               <span class="pill">Linux</span>
-              <span class="pill">Git</span>
             </div>
-            <div style="margin-top: 10px;"><b>Domains</b></div>
+            <div style="margin-top: 10px;">Areas I touch</div>
             <div class="pill-row">
-              <span class="pill">3D Vision</span>
-              <span class="pill">Point Clouds</span>
-              <span class="pill">Multimodal VLMs</span>
-              <span class="pill">AI Systems</span>
+              <span class="pill">3D / vision</span>
               <span class="pill">Robotics</span>
+              <span class="pill">Embedded</span>
+              <span class="pill">Data plumbing</span>
             </div>
           </div>
         </section>
 
-        <!-- Awards -->
+        <!-- 小总结 -->
         <section class="section-card">
           <div class="section-title">
-            <span class="emoji">🏅</span>
-            <span>Awards</span>
+            <span class="section-dot"></span>
+            <span>Notes</span>
           </div>
           <div class="section-body">
-            <ul class="clean-list">
-              <li>• China National Scholarship (2024/2025)</li>
-              <li>• Haixing Electric Power Scholarship (2024/2025)</li>
-              <li>• Strong academic performance: GPA ~3.84/4.0, Rank 1/20</li>
-              <li>• Robotics competition experience (RoboCup & others)</li>
-            </ul>
+            <p>
+              I like projects that are a bit messy at first and become clearer after a few iterations.
+            </p>
+            <p style="margin-top: 6px;">
+              Learning is slow, but it’s more fun when things actually run on hardware or show up on the screen.
+            </p>
           </div>
         </section>
 
         <!-- GitHub Stats -->
         <section class="section-card">
           <div class="section-title">
-            <span class="emoji">📊</span>
-            <span>GitHub Stats</span>
+            <span class="section-dot"></span>
+            <span>GitHub</span>
           </div>
           <div class="section-body">
-            <!-- GitHub Readme Stats -->
             <img
               class="stats-img"
               src="https://github-readme-stats.vercel.app/api?username=emptyttt&show_icons=true&theme=tokyonight&hide_border=true"
               alt="GitHub Stats for emptyttt"
             />
-            <div style="height: 8px;"></div>
             <img
               class="stats-img"
               src="https://github-readme-stats.vercel.app/api/top-langs/?username=emptyttt&layout=compact&theme=tokyonight&hide_border=true"
               alt="Top Languages for emptyttt"
             />
             <p class="small-note">
-              These stats are automatically generated based on my public repositories.
+              Auto-generated from public repos; not perfect, but good enough as a rough map.
             </p>
           </div>
         </section>
 
-        <!-- Contact & Social -->
+        <!-- Contact -->
         <section class="section-card">
           <div class="section-title">
-            <span class="emoji">📬</span>
-            <span>Contact & Links</span>
+            <span class="section-dot"></span>
+            <span>Contact</span>
           </div>
           <div class="section-body">
             <p style="margin-bottom: 6px;">
-              I am open to research collaborations, remote internships, and discussions about AI systems, 
-              3D perception, and GPU-based workloads.
+              If you want to chat about code, robots, or 3D data, feel free to reach out.
             </p>
             <ul class="clean-list" style="margin-top: 6px;">
-              <li>✉️ Email: <a href="mailto:tln88878887@gmail.com">tln88878887@gmail.com</a></li>
-              <li>🐙 GitHub: <a href="https://github.com/emptyttt" target="_blank">github.com/emptyttt</a></li>
+              <li>✉️ <a href="mailto:tln88878887@gmail.com" style="color: var(--accent); text-decoration: none;">tln88878887@gmail.com</a></li>
+              <li>🐙 <a href="https://github.com/emptyttt" target="_blank" style="color: var(--accent); text-decoration: none;">github.com/emptyttt</a></li>
             </ul>
-
-            <div class="pill-row" style="margin-top: 10px;">
-              <span class="pill">Always learning 🌱</span>
-              <span class="pill">Happy to connect 💌</span>
-            </div>
           </div>
         </section>
       </aside>
     </main>
 
     <footer class="footer">
-      Made with 💗 & HTML/CSS · Hosted on GitHub Pages
+      This page is a work in progress · Hosted on GitHub Pages
     </footer>
   </div>
 </body>
