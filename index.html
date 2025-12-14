@@ -31,10 +31,11 @@
       background:
         radial-gradient(circle at top left, #e0f2fe 0, transparent 55%),
         radial-gradient(circle at bottom right, #dcfce7 0, transparent 55%),
-        var(--bg);
+        linear-gradient(180deg, #f5fbff 0%, #f3fdf8 45%, #f9f5ff 100%);
       color: var(--text-main);
       min-height: 100vh;
       cursor: default;
+      overflow-x: hidden;
     }
 
     .page {
@@ -45,29 +46,145 @@
       z-index: 1;
     }
 
-    /* 自定义鼠标跟随小圆点 */
-    .cursor-dot {
+    /* ================= 背景可爱元素 ================= */
+
+    .bg-shape {
+      position: fixed;
+      pointer-events: none;
+      opacity: 0.7;
+      z-index: 0;
+    }
+
+    /* 小云朵 */
+    .cloud {
+      width: 140px;
+      height: 60px;
+      background: #ffffff;
+      border-radius: 40px;
+      box-shadow:
+        20px 0 0 0 #ffffff,
+        50px 5px 0 0 #ffffff,
+        75px -5px 0 0 #ffffff;
+      filter: drop-shadow(0 8px 10px rgba(148, 163, 184, 0.35));
+      animation: cloudFloat 40s linear infinite;
+    }
+
+    .cloud.c1 {
+      top: 8%;
+      left: -120px;
+      animation-delay: 0s;
+    }
+    .cloud.c2 {
+      top: 18%;
+      right: -140px;
+      transform: scale(0.9);
+      animation-delay: -8s;
+    }
+    .cloud.c3 {
+      top: 32%;
+      left: -100px;
+      transform: scale(0.8);
+      animation-delay: -16s;
+    }
+
+    @keyframes cloudFloat {
+      0% { transform: translateX(0) scale(1); }
+      50% { transform: translateX(60px) scale(1.02); }
+      100% { transform: translateX(240px) scale(1); }
+    }
+
+    /* 可爱小星星与软糖块 */
+    .star {
+      width: 14px;
+      height: 14px;
+      background: #facc15;
+      clip-path: polygon(50% 0%, 63% 35%, 100% 38%, 72% 62%, 82% 100%, 50% 79%, 18% 100%, 28% 62%, 0 38%, 37% 35%);
+      filter: drop-shadow(0 4px 6px rgba(234, 179, 8, 0.4));
+      animation: floatSoft 9s ease-in-out infinite alternate;
+    }
+
+    .star.s1 { top: 22%; left: 12%; animation-delay: -2s; }
+    .star.s2 { top: 65%; right: 10%; transform: scale(0.9); animation-delay: -5s; }
+
+    .candy {
+      width: 18px;
+      height: 18px;
+      border-radius: 6px;
+      background: linear-gradient(135deg, #a5b4fc, #38bdf8);
+      box-shadow: 0 5px 10px rgba(129, 140, 248, 0.35);
+      animation: floatSoft 11s ease-in-out infinite alternate;
+    }
+
+    .candy.c1 { top: 72%; left: 8%; animation-delay: -3s; }
+    .candy.c2 { top: 40%; right: 14%; transform: rotate(10deg); animation-delay: -7s; }
+
+    @keyframes floatSoft {
+      0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0.8; }
+      50% { transform: translateY(-8px) translateX(4px) rotate(4deg); opacity: 1; }
+      100% { transform: translateY(3px) translateX(-4px) rotate(-4deg); opacity: 0.85; }
+    }
+
+    /* ================ 自定义猫爪鼠标 ================ */
+
+    .cursor-paw {
       position: fixed;
       top: 0;
       left: 0;
-      width: 14px;
-      height: 14px;
-      border-radius: 999px;
-      background: rgba(59, 130, 246, 0.12);
-      border: 1px solid rgba(59, 130, 246, 0.5);
+      width: 32px;
+      height: 32px;
       pointer-events: none;
       transform: translate(-50%, -50%);
-      transition: background 0.2s ease, transform 0.07s ease;
       z-index: 9999;
-      backdrop-filter: blur(4px);
     }
 
-    .cursor-dot.active {
-      background: rgba(59, 130, 246, 0.25);
-      transform: translate(-50%, -50%) scale(1.3);
+    .cursor-paw-inner {
+      position: absolute;
+      inset: 0;
+      transform-origin: center;
+      transition: transform 0.12s ease, filter 0.12s ease;
     }
 
-    /* 顶部卡片 */
+    /* 猫爪主肉垫 */
+    .cursor-paw-inner::before {
+      content: "";
+      position: absolute;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #fdfdff;
+      border: 2px solid #bfdbfe;
+      box-shadow:
+        0 0 0 2px #e0f2fe,
+        0 6px 8px rgba(148, 163, 184, 0.45);
+      bottom: 2px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    /* 猫爪小肉球 */
+    .cursor-paw-inner::after {
+      content: "";
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #e0f2fe;
+      top: 2px;
+      left: 50%;
+      transform: translateX(-50%);
+      box-shadow:
+        -9px 4px 0 0 #e0f2fe,
+        9px 4px 0 0 #e0f2fe,
+        0 7px 0 0 #e0f2fe;
+    }
+
+    .cursor-paw.hovering .cursor-paw-inner {
+      transform: scale(1.1) translateY(1px);
+      filter: brightness(1.03);
+    }
+
+    /* ================ 顶部卡片 ================ */
+
     .hero {
       display: flex;
       flex-wrap: wrap;
@@ -95,7 +212,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 36px;
+      font-size: 30px;
       box-shadow: 0 8px 18px rgba(37, 99, 235, 0.4);
       border: 2px solid #ffffff;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -191,7 +308,8 @@
       border-color: #bfdbfe;
     }
 
-    /* 布局 */
+    /* =================== 布局 & 卡片 =================== */
+
     .layout {
       display: grid;
       grid-template-columns: minmax(0, 1.9fr) minmax(0, 1.4fr);
@@ -311,6 +429,26 @@
       color: var(--text-soft);
     }
 
+    /* 技术文档列表 */
+    .doc-item {
+      padding: 4px 0;
+    }
+
+    .doc-link {
+      font-size: 13px;
+      text-decoration: none;
+      color: var(--accent);
+    }
+
+    .doc-link:hover {
+      text-decoration: underline;
+    }
+
+    .doc-note {
+      font-size: 12px;
+      color: var(--text-soft);
+    }
+
     /* GitHub stats */
     .stats-img {
       width: 100%;
@@ -350,14 +488,25 @@
   </style>
 </head>
 <body>
-  <!-- 鼠标跟随小圆点 -->
-  <div class="cursor-dot"></div>
+  <!-- 背景云朵 + 星星软糖 -->
+  <div class="bg-shape cloud c1"></div>
+  <div class="bg-shape cloud c2"></div>
+  <div class="bg-shape cloud c3"></div>
+  <div class="bg-shape star s1"></div>
+  <div class="bg-shape star s2"></div>
+  <div class="bg-shape candy c1"></div>
+  <div class="bg-shape candy c2"></div>
+
+  <!-- 猫爪鼠标 -->
+  <div class="cursor-paw">
+    <div class="cursor-paw-inner"></div>
+  </div>
 
   <div class="page">
     <!-- 顶部 -->
     <header class="hero">
       <div class="hero-avatar">
-        <div class="avatar-circle">:)</div>
+        <div class="avatar-circle">🐱</div>
       </div>
       <div class="hero-main">
         <div class="hero-name-row">
@@ -440,7 +589,7 @@
               </div>
             </div>
 
-            <!-- 你可以复制这一块改名字和链接，增加更多项目 -->
+            <!-- TODO: 你可以复制这一块改名字和链接，增加更多项目 -->
             <!--
             <div class="project">
               <div class="project-header">
@@ -458,6 +607,56 @@
             <p class="soft" style="margin-top: 6px;">
               More projects and experiments live in my
               <a class="text-link" href="https://github.com/emptyttt?tab=repositories" target="_blank">GitHub repositories</a>.
+            </p>
+          </div>
+        </section>
+
+        <!-- Technical Notes / Markdown 文档入口 -->
+        <section class="card">
+          <div class="card-title">Technical Notes</div>
+          <div class="card-body">
+            <p class="soft">
+              Some markdown notes I keep while learning and debugging:
+            </p>
+
+            <div class="doc-item">
+              <a class="doc-link" href="#" target="_blank">
+                3D referring segmentation & multi-view notes
+              </a>
+              <div class="doc-note">
+                short markdown notes on 3D scenes, projections, and experiments.
+              </div>
+            </div>
+
+            <div class="doc-item">
+              <a class="doc-link" href="#" target="_blank">
+                STM32 / embedded control snippets
+              </a>
+              <div class="doc-note">
+                timers, PWM, servo control, and other small hardware experiments.
+              </div>
+            </div>
+
+            <div class="doc-item">
+              <a class="doc-link" href="#" target="_blank">
+                Robotics & navigation experiments
+              </a>
+              <div class="doc-note">
+                line-following logic, basic control, and robot behavior notes.
+              </div>
+            </div>
+
+            <div class="doc-item">
+              <a class="doc-link" href="#" target="_blank">
+                CUDA / PyTorch training notes
+              </a>
+              <div class="doc-note">
+                environment setup, kernels, and little issues that show up on GPU.
+              </div>
+            </div>
+
+            <p class="soft" style="margin-top: 6px;">
+              (replace the <code>#</code> links with your actual markdown files or repos when they’re ready.)
             </p>
           </div>
         </section>
@@ -536,37 +735,47 @@
     </footer>
   </div>
 
-  <!-- 鼠标跟随 JS -->
+  <!-- 猫爪鼠标 JS -->
   <script>
-    const cursorDot = document.querySelector(".cursor-dot");
-    let dotX = window.innerWidth / 2;
-    let dotY = window.innerHeight / 2;
+    const pawWrapper = document.querySelector(".cursor-paw");
+    const pawInner = document.querySelector(".cursor-paw-inner");
+
+    let targetX = window.innerWidth / 2;
+    let targetY = window.innerHeight / 2;
+    let currentX = targetX;
+    let currentY = targetY;
 
     document.addEventListener("mousemove", (e) => {
-      dotX = e.clientX;
-      dotY = e.clientY;
-      cursorDot.classList.add("active");
-      clearTimeout(cursorDot._timeout);
-      cursorDot._timeout = setTimeout(() => {
-        cursorDot.classList.remove("active");
-      }, 120);
+      targetX = e.clientX;
+      targetY = e.clientY;
     });
 
-    function animateDot() {
-      const rect = cursorDot.getBoundingClientRect();
-      const currentX = rect.left + rect.width / 2;
-      const currentY = rect.top + rect.height / 2;
+    // 当鼠标经过可交互元素时，让猫爪“按下”一点
+    document.addEventListener("mouseover", (e) => {
+      const interactive = e.target.closest("a, button, .btn, .project");
+      if (interactive) {
+        pawWrapper.classList.add("hovering");
+      }
+    });
 
-      const lerp = 0.18; // 越小越“慢悠悠”
-      const nextX = currentX + (dotX - currentX) * lerp;
-      const nextY = currentY + (dotY - currentY) * lerp;
+    document.addEventListener("mouseout", (e) => {
+      const interactive = e.target.closest("a, button, .btn, .project");
+      if (interactive) {
+        pawWrapper.classList.remove("hovering");
+      }
+    });
 
-      cursorDot.style.transform = `translate(${nextX}px, ${nextY}px) translate(-50%, -50%)`;
+    function animatePaw() {
+      const lerp = 0.35; // 越大跟随越快
+      currentX += (targetX - currentX) * lerp;
+      currentY += (targetY - currentY) * lerp;
 
-      requestAnimationFrame(animateDot);
+      pawWrapper.style.transform = `translate(${currentX}px, ${currentY}px) translate(-50%, -50%)`;
+
+      requestAnimationFrame(animatePaw);
     }
 
-    animateDot();
+    animatePaw();
   </script>
 </body>
 </html>
